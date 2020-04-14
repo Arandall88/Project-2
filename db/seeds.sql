@@ -1,6 +1,6 @@
-USE nerd_alert_db;
+USE test_db;
 
-INSERT INTO games (title, createdAt, updatedAt)
-VALUES ("Harry Potter", now(), now());
+-- INSERT INTO games (title, createdAt, updatedAt)
+-- VALUES ("Harry Potter", now(), now());
 
-select * from games;
+-- select * from games;
