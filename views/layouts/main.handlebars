@@ -4,23 +4,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nerd Alert App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <title>Looksie</title>
+    {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    {{!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/style.css" />
+    
+
 </head>
 
 <body>
-    {{{ body }}}
-    <script src="/js/script.js" type="text/javascript"></script>
+    <div class="top-bar">
+  <div class="top-bar-left">
+    <div class="row">
+        <div class="col" style="text-align:left; margin: auto;">
+            <img src="/assets/images/design-8637950f-4814-4882-ac6d-81a1d2dab3cd (2).png" alt="logo" style="max-width: 20%;">
+        </div>
+    </div>
+    <br>
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"></li>
+      <li>
+        <ul class="menu">
+  <li><a href="#">Hotels</a></li>
+
+  <li><a href="#">Wishlist</a></li>
+</ul>
+      </li>
+     
+    </ul>
+  </div>
+  {{!-- <div class="top-bar-right">
+    <ul class="menu">
+        <div class="animation-wrapper"></div>
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Checkout the area </button></li>
+    </ul>
+  </div> --}}
+  <br>
+  <div class="top-bar- centered">
+    <ul class="menu">
+        <div id="hotels" class="animation-wrapper success"></div>
+      <li><input id ="apisearch" type="search" placeholder="Search"></li>
+      <li><button id= "apisearchbutton" type="button" class="button">Search Hotels</button></li>
+    </ul>
+  </div>
+</div>   
+<div class="col" style="text-align:centered; margin: auto;">
+  <img src="/assets/images/FullColor_IconOnly_1280x1024_72dpi.jpg" alt="logo" style="max-width: 20%;">
+</div>
+
+
+  {{!-- <div class="shake"></div>
+  <div class="spin"></div>
+  <div class="wiggle"></div>
+</div> --}}
+<br>
+
+<!-- image has padding -->
+<div class="card" style="width: 300px;">
+  <div class="card-divider">
+  <strong>If you could go anywhere , where would you go?</strong>
+  </div>
+  <div id="destinations" class="card-section">
+<p class="lead">What's your<em>Vacation  Destination?</em></p>
+  </div>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+</div>
+
+      
+{{!-- <div class="row">
+  <div class="columns small-4 padding">4 columns</div>
+  <div class="columns">Whatever's left!</div>
+  <div class="columns">Whatever's left!</div>
+</div> --}}
+
+ {{{ body }}}
+
+<div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="large-12 cell">
+            <h1>Welcome to Looksie</h1>
+          </div>
+        </div>
+      
+        <div class="grid-x grid-padding-x">
+          <div class="small-4 cell">
+            <div class="callout">
+              <h3>We&rsquo;re stoked you want to try Foundation! </h3>
+                <p>
+                  <h3 id="places">
+                      Destination?
+                  </h3>
+                  <p id="todo">
+                    Hotels And Things to do.
+                  </p>
+                  <img id="pictures"> 
+                </p>
+              </div>
+              
+            <!-- Grid Example -->
+      
+      
+          <div class="small-4 medium-4 cell">
+            <h5>We bet you&rsquo;ll need a form somewhere:</h5>
+            <form>
+              <div class="grid-x grid-padding-x">
+                <div class="small-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="small.4.cell" /><br />
+                </div>
+                <br>
+                <div class="-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="small-4.cell" /><br />
+                </div>
+                <br>
+                <div class="small-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="small-4.cell" /><br />
+                </div>
+                <br>
+                <div class="small-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="small;-4.cell" /> 
+                </div>
+                {{!-- <div class="large-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="large-4.cell" />
+                </div>
+                <div class="large-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="large-4.cell" />
+                </div>
+                <div class="large-4 cell">
+                  <label>Input Label</label>
+                  <input type="text" placeholder="large-4.cell" />
+                </div>
+              </div>
+               --}}
+              {{!-- <div class="grid-x grid-padding-x">
+                <div class="large-12 cell">
+                  <label>Textarea Label</label>
+                  <textarea placeholder="small-12.cell"></textarea>
+                </div> --}}
+              </div>
+            </form>
+            </div>
+            <h5>Try one of these buttons:</h5>
+            <p><a href="#" class="button">Simple Button</a><br />
+              <a href="#" class="success button">Success Btn</a><br />
+              <a href="#" class="alert button">Alert Btn</a><br />
+              <a href="#" class="secondary button">Secondary Btn</a></p>
+            <div class="callout">
+              <h5>So many components, girl!</h5>
+              <p>A whole kitchen sink of goodies comes with Foundation. Check out the docs to see them all, along with details
+                on making them your own.</p>
+              <a href="https://foundation.zurb.com/sites/docs/" class="small button">Go to Foundation Docs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "/api/users"
+            }).done(result => {
+                console.log(result);
+                let selectorEl = $("#user-dropdown");
+                for (let i = 0; i < result.length; i++) {
+                    selectorEl.append(`<option value="${result[i].id}">${result[i].username}</option>`)
+                }
+            })
+
+            $("#user-dropdown").on("change", (event) => {
+                console.log(event.target.value);
+                localStorage.setItem('currentUser', event.target.value);
+            })
+        })
+    </script>
+    <script src="/assets/js/navbar.js">
+
+    </script>
+      <script src="/assets/js/api.js"></script>
 </body>
 
 </html>

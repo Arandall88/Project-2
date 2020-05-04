@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{user.username}}'s Lego Sets</h1>
+        </div>
+    </div>
+    <div class="row" id="legos">
+        {{#each legos}}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img src={{imageURL}} class="card-img-top" alt="{{name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">
+                        <strong>Set:</strong> {{setNumber}}
+                        <br />
+                        <strong>Pieces:</strong> {{numberOfPieces}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            Vacation Destination Wishlist!
+        </div>
+        <div class="row">
+        <div class="col" style="text-align:center; margin: auto;">
+            <img src="/assets/images/FullColor_IconOnly_1280x1024_72dpi.jpg" alt="logo" style="max-width: 100%;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert" id="user-creation-alert" style="display:none">
+            </div>
+            <h5>We bet you&rsquo;ll need a form somewhere:</h5>
+            <form>
+                <div class="grid-x grid-padding-x">
+                    <div class="large-12 cell">
+                        <label>Input Label</label>
+                        <input type="text" placeholder="large-12.cell" />
+                    </div>
+                </div>
+                {{!-- <div class="grid-x grid-padding-x">
+                    <div class="large-4 medium-4 cell">
+                        <label>Input Label</label>
+                        <input type="text" placeholder="large-4.cell" />
+                    </div>
+                    <div class="large-4 medium-4 cell">
+                        <label>Input Label</label>
+                        <input type="text" placeholder="large-4.cell" />
+                    </div>
+                    <div class="large-4 medium-4 cell">
+                        <div class="grid-x">
+                            <label>Input Label</label>
+                            <div class="input-group">
+                                <input type="text" placeholder="small-9.cell" class="input-group-field" />
+                                <span class="input-group-label">.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="grid-x grid-padding-x">
+                    <div class="large-12 cell">
+                        <label>Select Box</label>
+                        <select>
+                            <option value="husker">Husker</option>
+                            <option value="starbuck">Starbuck</option>
+                            <option value="hotdog">Hot Dog</option>
+                            <option value="apollo">Apollo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <div class="large-6 medium-6 cell">
+                        <label>Choose Your Favorite</label>
+                        <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
+                        <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
+                    </div>
+                    <div class="large-6 medium-6 cell">
+                        <label>Check these out</label>
+                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+                        <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <div class="large-12 cell">
+                        <label>Textarea Label</label>
+                        <textarea placeholder="small-12.cell"></textarea>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <form id="new-user-form">
+                <div class="form-group">
+                    <label for="username">User</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Destinations</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"  required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Traveled To</label>
+                    <input type="password" class="form-control" id="password"  required>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">Wishlist</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+
+    $("#new-user-form").on("submit", function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "/api/users",
+            method: "POST",
+            data: {
+                username: $("#user").val(),
+                email: $("#destinations").val(),
+                password: $("#traveledto").val(),
+                firstName: $("#wishlist").val(),
+            }
+        }).done(function (response) {
+            console.log(response);
+            if (response.success) {
+                $("#user-creation-alert").text(response.message + ". Redirecting in 5 seconds . . .");
+                $("#user-creation-alert").show();
+                $("#user").val("")
+                $("#destinations").val("")
+                $("#traveledto").val("")
+                $("#wishlist").val("")
+                setTimeout(function () { window.location.replace("/users"); }, 5000);
+            }
+        })
+    });
+</script>

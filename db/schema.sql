@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS test_db;
-CREATE DATABASE test_db
+DROP DATABASE IF EXISTS looksie_db;
+CREATE DATABASE looksie_db;
 
-USE test_db;
+USE looksie_db;

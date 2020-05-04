@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Your Wishlist!</h1>
+        </div>
+    </div>
+    <div class="row">
+        {{#each hotel}}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem; min-height: 450px">
+                <img src={{imageURL}} class="card-img-top" alt="{{name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">
+                        <strong>Set:</strong> {{setNumber}}
+                        <br />
+                        <strong>Pieces:</strong> {{numberOfPieces}}
+                    </p>
+                    <button class="btn btn-primary add-to-collection" data-id="{{id}}">Add to my
+                        collection</button>
+                </div>
+            </div>
+            
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(".add-to-collection").on("click", function () {
+        console.log($(this).data("id"));
+        console.log(localStorage.getItem("currentUser"));
+        $.ajax({
+            method: "POST",
+            url: "/api/userLegos",
+            data: {
+                userId: localStorage.getItem("currentUser"),
+                legoId: $(this).data("id")
+            }
+        }).done(response => {
+            console.log(response);
+            if (response.success) {
+                alert(response.message);
+            }
+        })
+    })
+</script>

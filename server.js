@@ -1,5 +1,5 @@
+require("dotenv").config();
 const express = require("express");
-
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -13,32 +13,65 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set Handlebars.
-var exphbs = require("express-handlebars");
+const exphbs = require("express-handlebars");
+const handlebars = require("handlebars");
+const {
+  allowInsecurePrototypeAccess,
+} = require("@handlebars/allow-prototype-access");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main",
+    handlebars: allowInsecurePrototypeAccess(handlebars),
+  })
+);
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-// const catRoutes = require("./controllers/catsController.js");
+const userRoutes = require("./controllers/userController.js");
+const hotelRoutes = require("./controllers/hotelsController.js");
+const searchRoutes = require("./controllers/searchController.js");
 
-// app.use(catRoutes);
+app.use(userRoutes);
+app.use(hotelRoutes);
+app.use(searchRoutes);
 
 app.get("/", function (req, res) {
-  db.Game.findAll({}).then((games) => {
-    console.log(games);
-    res.render("index", { games });
+  res.render("hotel");
+});
+
+app.get("/api/config", function (req, res) {
+  res.json({
+    success: true,
   });
 });
 
-app.get("/config", function (req, res) {
-  res.json({
-    error: false,
-    success: true,
-  });
+app.post("/api/userHotels", function (req, res) {
+  console.log(req.body);
+  db.UserHotels.create({
+    userId: req.body.userId,
+    legoId: req.body.hotelId,
+  })
+    .then((newEntry) => {
+      res.json({
+        success: true,
+        message: "Successfully added to your collection.",
+        data: newEntry,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json({
+        success: false,
+      });
+    });
 });
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(`Server listening on: http://localhost:${PORT}`);
+    // console.log(process.env);
   });
 });
