@@ -10,5 +10,5 @@ $("#apisearchbutton").on("click", function () {
     $("#todo").text(response.data[1].result_object.category);
     $("#places").text(response.data[1].result_object.subcategory[0].name);
     $("#pictures").attr(response.response.data[1].result_object.photo.images.small)
-  )
+  
 });
