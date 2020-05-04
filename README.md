@@ -6,4 +6,6 @@
   
   # As a User I want to be able to find vacation spots and local attractions and save them to list to refer to in the future. 
  
-### lego-tracker template borrowed from instructor demo app. 
+### lego-tracker template borrowed from instructor demo app.
+
+#### https://github.com/jonathanjwatson/lego-tracker
