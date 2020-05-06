@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var unirest = require("unirest");
-// var request = require("request");
+var request = require("request");
 
 router.get("/api/search/:term", function (req, res) {
   // //  unirest.get( "https://hotels4.p.rapidapi.com/locations/search")
@@ -17,7 +17,7 @@ router.get("/api/search/:term", function (req, res) {
   //     res.send(response.body["suggestions"]);
   //   })
 
-  unirest("GET", "https://tripadvisor1.p.rapidapi.com/locations/search")
+  unirest("GET", "https://tripadvisor1.p.rapidapi.com/locations/search") 
     .headers({
       "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
       "x-rapidapi-key": "48ee43e691msh0d98ca3de053e79p1587b7jsn757067a83940",
@@ -31,14 +31,18 @@ router.get("/api/search/:term", function (req, res) {
       currency: "USD",
       units: "km",
       query: req.params.term,
-    })
+	})
+	
     .then(function (response) {
-      if (response.error) throw new Error(response.error){
-
+      if (response.error) throw new Error(response.error) {
+		
       console.log(response.body);
       res.send(response.body);
 	  }
+	  
 	});
+
 });
+
 
 module.exports = router;
