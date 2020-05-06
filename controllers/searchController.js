@@ -33,11 +33,12 @@ router.get("/api/search/:term", function (req, res) {
       query: req.params.term,
     })
     .then(function (response) {
-      if (response.error) throw new Error(response.error);
+      if (response.error) throw new Error(response.error){
 
       console.log(response.body);
       res.send(response.body);
-    });
+	  }
+	});
 });
 
 module.exports = router;
