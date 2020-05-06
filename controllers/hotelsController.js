@@ -55,7 +55,7 @@ router.get("/api/hotels/:id", function (req, res) {
 });
 
 router.post("/api/hotels", function (req, res) {
-  const newLegoObject = {
+  const newHotelObject = {
     name: req.body.name.trim(),
     numberOfPieces: req.body.numberOfPieces,
     setNumber: req.body.setNumber.trim(),

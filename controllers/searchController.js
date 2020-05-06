@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var unirest = require("unirest");
-var request = require("request");
+// var request = require("request");
 
 router.get("/api/search/:term", function (req, res) {
   

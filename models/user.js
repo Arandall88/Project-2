@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
 
   User.associate = function (models) {
     User.belongsToMany(models.Hotels, {
-      through: "UserLegos",
+      through: "UserHotels",
       foreignKey: "userId",
     });
   };
